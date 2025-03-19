@@ -1,0 +1,155 @@
+/* Réinitialisation */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: VAGABONDED, sans-serif;
+  }
+  
+  .home-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  /* Panneau gauche */
+  .left-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5%;
+    position: relative;
+  }
+  
+  .logo {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 15%;
+    height: auto;
+    max-width: 120px;
+  }
+  
+  .title-image {
+    margin-top: 5vh;
+    width: 50%;
+    max-width: 350px;
+  }
+  
+  .btn {
+    width: 150px;
+    max-width: 180px;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 25px;
+    margin-top: 10px;
+  }
+  
+  .custom-btn1,
+  .custom-btn2 {
+    background-color: #41499F !important;
+    color: white !important;
+    border: none !important;
+    font-family: 'Sakana', sans-serif;
+  }
+  
+  .custom-btn1:hover,
+  .custom-btn2:hover {
+    color: #41499F !important;
+    background-color: #ffffff !important;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Panneau droit */
+  .right-panel {
+    width: 100%;
+    background: url('/assets/images/imageaccueil.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+  }
+  
+  .description {
+    background: #ffffff;
+    color: #41499F;
+    padding: 5%;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .car-video {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 767px) {
+    .home-container {
+      flex-direction: column;
+    }
+  
+    .left-panel {
+      width: 100%;
+      padding: 5%;
+    }
+  
+    .right-panel {
+      width: 100%;
+      padding: 5%;
+    }
+  
+    .logo {
+      width: 20%;
+      max-width: 100px;
+    }
+  
+    .title-image {
+      width: 70%;
+    }
+  
+    .description {
+      font-size: 1rem;
+    }
+  
+    .btn {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .home-container {
+      flex-direction: column;
+    }
+  
+    .left-panel,
+    .right-panel {
+      width: 100%;
+      padding: 5%;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .home-container {
+      flex-direction: row;
+    }
+  
+    .left-panel {
+      width: 40%;
+    }
+  
+    .right-panel {
+      width: 60%;
+    }
+  }
+  

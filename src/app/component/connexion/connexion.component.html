@@ -1,1 +1,43 @@
-<p>connexion works!</p>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="login-container p-5" style="max-width: 600px; width: 100%;">
+            <div class="text-center mb-5">
+                <img src="/assets/svg/logo.svg" alt="E2D Logo" class="logo">
+            </div>
+            <div class="toggle-buttons d-flex justify-content-center mb-4">
+                <button class="btn btn-primary me-5 px-4 py-1" id="student-btn">Students</button>
+                <button class="btn btn-outline-primary px-4 py-1" id="moniteur-btn">Moniteur</button>
+            </div>
+            <form>
+                <div class="mb-4 text-start">
+                    <label for="email" class="form-label">Identifiant ou adresse mail</label>
+                    <input type="email" class="form-control p-3" id="email" placeholder="Entrez votre email">
+                </div>
+                <div class="mb-4 text-start position-relative">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control p-3" id="password" placeholder="Entrez votre mot de passe">
+                        <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                            <img src="/assets/svg/eye-icone.svg" alt="Afficher/Masquer" class="eye-icon" style="width: 24px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-4 form-check text-start">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-200 py-">CONNEXION</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+</body>

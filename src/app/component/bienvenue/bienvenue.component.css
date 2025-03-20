@@ -1,4 +1,4 @@
-/* Réinitialisation */
+
 * {
     margin: 0;
     padding: 0;
@@ -29,14 +29,14 @@
     position: absolute;
     top: 2%;
     left: 2%;
-    width: 15%;
+    width: 40%;
     height: auto;
     max-width: 120px;
   }
   
   .title-image {
     margin-top: 5vh;
-    width: 50%;
+    width: 80%;
     max-width: 350px;
   }
   

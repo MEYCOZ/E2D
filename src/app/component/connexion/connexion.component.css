@@ -2,25 +2,65 @@ body {
     background: url('/assets/images/fondco.png') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+    font-family: VAGABONDED, sans-serif;
+}
+
+
+
+.form-check-input {
+    border-color: #41499F;
+    background-color: #41499F;
+}
+
+.form-label {
+    color: #41499F;
+    font-weight: bold;
+    font-size: 16px; 
+}
+
+.form-control {
+    border: 1px solid #41499F;
+    border-radius: 20px;
+    font-size: 16px; 
+    font-family: Arial, sans-serif;
+    
 }
 
 .login-container {
     background: white;
-    padding: 40px;
     border-radius: 70px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
 }
 
 .logo {
-    width: 188px;
-    margin-left: 67px;
+    width: 230px;
+    margin-left: 100px;
 }
     
 
+/* Bouton inactif */
 .toggle-buttons button {
-    font-size: 1.2rem;
+    background-color: #ffffff; /* Fond blanc */
+    color: #41499F; /* Bleu */
+    border: 2px solid #41499F;
+    transition: 0.3s;
+    height: 40px; 
+    font-family: 'Sakana', sans-serif;
+    border-radius: 60px;
+}
+
+/* Effet au survol */
+.toggle-buttons button:hover {
+    background-color: #41499F;
+    color: white;
+}
+
+.btn.active {
+    background-color: #41499F !important; /* Rouge orangé */
+    color: white !important;
+    border-color: #41499F;
 }
 
 .input-group .eye-icon {
@@ -34,9 +74,14 @@ button[type="submit"] {
     display: block;
     margin: 0 auto;
     border-radius: 50px;
-    height: 40px; /* Ajuste selon ton besoin */
+    height: 45px; /* Ajuste selon ton besoin */
+    font-family: 'Sakana', sans-serif;
+    background-color: #41499F ;
 }
 
-.form-control {
-    
+button:hover[type="submit"]  {
+    background-color: #ffffff;
+    color: #41499F;
+    border-color: #41499F;
 }
+

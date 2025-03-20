@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+    font-family: 'Sakana'; /* Nom personnalisé */
+    src: url('/assets/fonts/Sakana.ttf') format('truetype'); /* Chemin vers le fichier */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+  @font-face {
+    font-family: 'VAGABONDED'; /* Nom personnalisé */
+    src: url('/assets/fonts/VAGABONDED-Bold.ttf') format('truetype'); /* Chemin vers le fichier */
+    font-weight: normal;
+    font-style: normal;
+  }

@@ -67,7 +67,7 @@
   /* Panneau droit */
   .right-panel {
     width: 100%;
-    background: url('/assets/images/imageaccueil.png') center/cover no-repeat;
+    background: url('/public/images/imageaccueil.png') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;

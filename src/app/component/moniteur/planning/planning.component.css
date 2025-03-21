@@ -1,0 +1,91 @@
+body {
+    background-image: url(/img/Fond\ Voiture\ 2.png);
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Custom primary color to match the design */
+.bg-primary {
+    background-color: #3f51b5 !important;
+}
+
+
+/* Main background with gradient */
+.main-bg {
+    min-height: calc(100vh - 80px);
+    padding: 20px 0;
+}
+
+/* Rounded corners for cards */
+.rounded-4 {
+    border-color: #ffffff !important;
+    border: solid 0.05em;
+    border-radius: 2.0rem !important;
+    filter: drop-shadow(1px 1px 7px #393939);
+}
+
+/* Planning table styling */
+.planning-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.planning-table th,
+.planning-table td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.time-slot {
+    font-size: 0.85rem;
+    vertical-align: middle;
+    background-color: #f8f9fa;
+    padding: 10px 5px;
+}
+
+.slot {
+    height: 80px;
+    padding: 0;
+    vertical-align: top;
+    background-color: #fff;
+}
+
+.slot-content {
+    padding: 8px;
+    height: 100%;
+    font-size: 0.85rem;
+    color: white;
+}
+
+.slot-blue {
+    background-color: #3f51b5;
+}
+
+.slot-pink {
+    background-color: #ff4081;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .btn-outline-primary {
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .time-slot {
+        font-size: 0.7rem;
+    }
+    
+    .slot-content {
+        font-size: 0.7rem;
+        padding: 4px;
+    }
+    
+    .slot {
+        height: 60px;
+    }
+}

@@ -1,0 +1,49 @@
+body {
+    background-image: url(/img/Fond\ Voiture\ 3.png);
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Custom primary color to match the design */
+.bg-primary {
+    background-image: linear-gradient(180deg, #41499F, #171A39);
+}
+
+
+/* Main background with gradient */
+.main-bg {
+    min-height: calc(100vh - 80px);
+    padding: 20px 0;
+}
+
+/* Rounded corners for cards */
+.rounded-4 {
+    border-color: #ffffff !important;
+    border: solid 0.05em;
+    border-radius: 2.0rem !important;
+    filter: drop-shadow(1px 1px 2.5px #1b1b1b);
+}
+
+/* Chart container */
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .btn-outline-primary {
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+}

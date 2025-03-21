@@ -8,6 +8,10 @@ import { BienvenueComponent } from './component/bienvenue/bienvenue.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { MoniteurComponent } from './component/moniteur/moniteur.component';
+import { NoteselevesComponent } from './component/moniteur/noteseleves/noteseleves.component';
+import { MonprofilComponent } from './component/moniteur/monprofil/monprofil.component';
+import { PlanningComponent } from './component/moniteur/planning/planning.component';
+import { StatistiqueComponent } from './component/moniteur/statistique/statistique.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { MoniteurComponent } from './component/moniteur/moniteur.component';
     BienvenueComponent,
     ConnexionComponent,
     InscriptionComponent,
-    MoniteurComponent
+    MoniteurComponent,
+    NoteselevesComponent,
+    MonprofilComponent,
+    PlanningComponent,
+    StatistiqueComponent
   ],
   imports: [
     BrowserModule,

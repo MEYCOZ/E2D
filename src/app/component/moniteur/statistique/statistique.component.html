@@ -1,0 +1,120 @@
+<body>
+ <!-- Main Content -->
+        <div class="main-bg">
+            <div class="container py-5">
+                <!-- Statistics Card -->
+                <div class="card rounded-4 border-0 shadow-sm mx-auto" style="max-width: 900px;">
+                    <div class="card-body bg-primary text-white rounded-4 p-4">
+                        <h2 class="text-center mb-5">Statistique</h2>
+                        
+                        <div class="chart-container">
+                            <canvas id="statisticsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration du graphique
+            const ctx = document.getElementById('statisticsChart').getContext('2d');
+            
+            // Création d'un dégradé pour les barres
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(191, 179, 239, 1.0)');
+            gradient.addColorStop(1, 'rgba(134, 105, 221, 1.9)');
+            
+            // Données du graphique
+            const data = {
+                labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août'],
+                datasets: [{
+                    label: 'Statistiques',
+                    data: [3500, 15070, 8000, 15000, 20250, 3000, 10000, 8000],
+                    backgroundColor: gradient,
+                    borderWidth: 0,
+                    borderRadius: 5,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.8
+                }]
+            };
+            
+            // Options du graphique
+            const options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        titleColor: '#3f51b5',
+                        bodyColor: '#3f51b5',
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14
+                        },
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y.toLocaleString() + ' €';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                            font: {
+                                size: 12
+                            },
+                            callback: function(value) {
+                                if (value === 0) return '0';
+                                if (value === 570) return '570';
+                                if (value === 2500) return '2 500';
+                                if (value === 5000) return '5 000';
+                                if (value === 10000) return '10 000';
+                                if (value === 15070) return '15 070';
+                                if (value === 20250) return '20 250';
+                                return '';
+                            },
+                            stepSize: 5000,
+                            max: 22000
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.8)',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // Création du graphique
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        });
+    </script>
+</body>

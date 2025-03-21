@@ -1,0 +1,63 @@
+body {
+    background-image: url(/img/Fond\ Voiture\ 1.png);
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Custom primary color to match the design */
+.bg-primary {
+    background-color: #41499F !important;
+}
+
+.text-primary {
+    color: #41499F !important;
+}
+
+.btn-outline-primary {
+    color: #41499F;
+    border-color: #41499F;
+}
+
+.btn-outline-primary:hover {
+    background-color: #41499F;
+    color: white;
+}
+
+/* Main background with gradient */
+.main-bg {
+    min-height: calc(100vh - 80px);
+    padding: 20px 0;
+}
+
+/* Rounded corners for cards */
+.rounded-4 {
+    border: solid 0.05em;
+    border-radius: 2.0rem !important;
+    filter: drop-shadow(1px 1px 5.5px #1b1b1b);
+}
+
+/* Table styling */
+.table-bordered {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .btn-outline-primary {
+        margin-top: 10px;
+        width: 100%;
+    }
+}

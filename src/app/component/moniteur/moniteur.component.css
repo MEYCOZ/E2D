@@ -1,0 +1,101 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Custom primary color to match the design */
+.bg-primary {
+    background-image: linear-gradient(180deg, #41499F, #171A39);
+}
+
+/* Rounded corners for cards */
+.rounded-4 {
+    border-radius: 3.5rem !important;
+}
+
+.rounded-top-4 {
+    border-top-left-radius: 3.5rem !important;
+    border-top-right-radius: 3.5rem !important;
+}
+
+/* Table styling */
+.table-bordered {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar styling */
+.calendar-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-calendar th,
+.table-calendar td {
+    padding: 0.5rem;
+    border: none;
+    font-weight: normal;
+}
+
+/* Pagination dots */
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* Chart styling */
+.chart-container {
+    display: flex;
+    height: 250px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.chart {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 10px;
+}
+
+.chart-bar {
+    width: 8%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px 5px 0 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 200px;
+    }
+    
+    .chart-y-axis {
+        width: 50px;
+        font-size: 0.6rem;
+    }
+}

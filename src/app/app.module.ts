@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router'; // Ajoute cette ligne
 import { BienvenueComponent } from './component/bienvenue/bienvenue.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
@@ -12,6 +14,12 @@ import { NoteselevesComponent } from './component/moniteur/noteseleves/noteselev
 import { MonprofilComponent } from './component/moniteur/monprofil/monprofil.component';
 import { PlanningComponent } from './component/moniteur/planning/planning.component';
 import { StatistiqueComponent } from './component/moniteur/statistique/statistique.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { NavbarreComponent } from './component/admin/navbarre/navbarre.component';
+import { StudentsComponent } from './component/admin/students/students.component';
+import { AutoecoleComponent } from './component/admin/autoecole/autoecole.component';
+import { MoniteursComponent } from './component/admin/moniteurs/moniteurs.component';
+import { NavmoniteurComponent } from './component/moniteur/navmoniteur/navmoniteur.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +31,19 @@ import { StatistiqueComponent } from './component/moniteur/statistique/statistiq
     NoteselevesComponent,
     MonprofilComponent,
     PlanningComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    AdminComponent,
+    NavbarreComponent,
+    StudentsComponent,
+    AutoecoleComponent,
+    MoniteursComponent,
+    NavmoniteurComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    RouterModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,12 +4,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-connexion',
   standalone: false,
   templateUrl: './connexion.component.html',
-  styleUrl: './connexion.component.css'
+  styleUrls: ['./connexion.component.css'] // ✅ Correction ici
 })
 export class ConnexionComponent implements OnInit {
   
   showPassword: boolean = false;
-  selectedButton: string = 'student'; // "Students" actif par défaut
+  selectedButton: string = 'student'; // Défini par défaut
 
   ngOnInit(): void {}
 

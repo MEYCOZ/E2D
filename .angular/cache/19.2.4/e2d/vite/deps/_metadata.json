@@ -1,95 +1,64 @@
 {
-<<<<<<< Updated upstream
-  "hash": "57cd422b",
+  "hash": "09c33007",
   "configHash": "0ec29d7e",
-  "lockfileHash": "7c85a792",
-  "browserHash": "b9178e47",
-=======
-  "hash": "d4bd37a1",
-  "configHash": "30aee41a",
-  "lockfileHash": "8856bb6e",
-  "browserHash": "e6124471",
->>>>>>> Stashed changes
+  "lockfileHash": "86a3f59e",
+  "browserHash": "b3e1c0c3",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-<<<<<<< Updated upstream
-      "fileHash": "9c780217",
-=======
-      "fileHash": "c59fa7d4",
->>>>>>> Stashed changes
+      "fileHash": "515fa51d",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-<<<<<<< Updated upstream
-      "fileHash": "167af0a5",
-=======
-      "fileHash": "2aa1538d",
->>>>>>> Stashed changes
+      "fileHash": "7a84eeaf",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-<<<<<<< Updated upstream
-      "fileHash": "9c776e18",
-=======
-      "fileHash": "fe30da0b",
->>>>>>> Stashed changes
+      "fileHash": "c86668cb",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-<<<<<<< Updated upstream
-      "fileHash": "4a5f3ab4",
-=======
-      "fileHash": "6338a0eb",
->>>>>>> Stashed changes
+      "fileHash": "bce1c41e",
       "needsInterop": false
     },
     "@ng-bootstrap/ng-bootstrap": {
       "src": "../../../../../../node_modules/@ng-bootstrap/ng-bootstrap/fesm2022/ng-bootstrap.mjs",
       "file": "@ng-bootstrap_ng-bootstrap.js",
-<<<<<<< Updated upstream
-      "fileHash": "7d877384",
-=======
-      "fileHash": "e7caa4d0",
->>>>>>> Stashed changes
+      "fileHash": "0e96974e",
       "needsInterop": false
     },
     "chart.js": {
       "src": "../../../../../../node_modules/chart.js/dist/chart.js",
       "file": "chart__js.js",
-<<<<<<< Updated upstream
-      "fileHash": "992bba5d",
+      "fileHash": "d1465b77",
       "needsInterop": false
     },
     "chart.js/auto": {
       "src": "../../../../../../node_modules/chart.js/auto/auto.js",
       "file": "chart__js_auto.js",
-      "fileHash": "6c1a387d",
-=======
-      "fileHash": "c7d361c5",
->>>>>>> Stashed changes
+      "fileHash": "fd7cc332",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-Y2A37JNS": {
-      "file": "chunk-Y2A37JNS.js"
+    "chunk-KKTVHHQP": {
+      "file": "chunk-KKTVHHQP.js"
     },
-    "chunk-RKKUT5R7": {
-      "file": "chunk-RKKUT5R7.js"
+    "chunk-MQTNOBTR": {
+      "file": "chunk-MQTNOBTR.js"
     },
-    "chunk-AFEC4H7Z": {
-      "file": "chunk-AFEC4H7Z.js"
+    "chunk-VEI3NXN7": {
+      "file": "chunk-VEI3NXN7.js"
     },
-    "chunk-U37BE7IZ": {
-      "file": "chunk-U37BE7IZ.js"
+    "chunk-NWXWL3ZZ": {
+      "file": "chunk-NWXWL3ZZ.js"
     },
     "chunk-WDMUDEB6": {
       "file": "chunk-WDMUDEB6.js"

@@ -1,20 +1,22 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { Chart, ChartConfiguration } from 'chart.js';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-code-route',
   standalone: false,
+
   templateUrl: './code-route.component.html',
   styleUrl: './code-route.component.css'
 })
-export class CodeRouteComponent implements OnInit, AfterViewInit {
-  @ViewChild('monCanvas1') monCanvas1!: ElementRef;
-  @ViewChild('monCanvas2') monCanvas2!: ElementRef;
-  @ViewChild('monCanvas3') monCanvas3!: ElementRef;
+export class CodeRouteComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('monCanvas1', { static: false }) monCanvas1!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('monCanvas2', { static: false }) monCanvas2!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('monCanvas3', { static: false }) monCanvas3!: ElementRef<HTMLCanvasElement>;
 
-  monGraphique1: Chart | null = null;
-  monGraphique2: Chart | null = null;
-  monGraphique3: Chart | null = null;
+  monGraphique1: Chart<any> | null = null;
+  monGraphique2: Chart<any> | null = null;
+  monGraphique3: Chart<any> | null = null;
 
   constructor() { }
 
@@ -23,7 +25,37 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.afficherGraphiques();
+    this.loadChartJS().then(() => {
+      this.afficherGraphiques();
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Détruit les graphiques pour libérer les ressources
+    if (this.monGraphique1) {
+      this.monGraphique1.destroy();
+    }
+    if (this.monGraphique2) {
+      this.monGraphique2.destroy();
+    }
+    if (this.monGraphique3) {
+      this.monGraphique3.destroy();
+    }
+  }
+
+  async loadChartJS(): Promise<void> {
+    try {
+      const { Chart } = await import('chart.js/auto');
+      // Enregistrez Chart.js globalement si nécessaire
+      // (window as any).Chart = Chart;
+    } catch (error) {
+      console.error("Failed to load Chart.js:", error);
+      // Affichez un message d'erreur à l'utilisateur dans l'interface utilisateur.
+      // Vous pouvez utiliser un service d'alerte ou manipuler le DOM pour afficher un message.
+      // Par exemple :
+      // alert('Erreur de chargement de Chart.js. Veuillez vérifier votre connexion réseau.');
+      throw error; // Rethrow pour que l'initialisation du composant échoue.
+    }
   }
 
   afficherGraphiques(): void {
@@ -33,7 +65,10 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
   }
 
   afficherGraphique1(): void {
+    if (!this.monCanvas1?.nativeElement) return;
     const ctx = this.monCanvas1.nativeElement.getContext('2d');
+    if (!ctx) return;
+
     const config: ChartConfiguration = {
       type: 'bar',
       data: {
@@ -67,7 +102,7 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
             display: true,
             text: 'Graphique 1: Code de la Route',
             font: {
-                size: 16
+              size: 16
             }
           }
         },
@@ -78,11 +113,18 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
         }
       }
     };
+
+    if (this.monGraphique1) {
+      this.monGraphique1.destroy();
+    }
     this.monGraphique1 = new Chart(ctx, config);
   }
 
   afficherGraphique2(): void {
+    if (!this.monCanvas2?.nativeElement) return;
     const ctx = this.monCanvas2.nativeElement.getContext('2d');
+    if (!ctx) return;
+
     const config: ChartConfiguration = {
       type: 'pie',
       data: {
@@ -113,8 +155,8 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
           title: {
             display: true,
             text: 'Graphique 2: Répartition',
-             font: {
-                size: 16
+            font: {
+              size: 16
             }
           },
           legend: {
@@ -123,11 +165,17 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
         }
       }
     };
+    if (this.monGraphique2) {
+      this.monGraphique2.destroy();
+    }
     this.monGraphique2 = new Chart(ctx, config);
   }
 
   afficherGraphique3(): void {
+    if (!this.monCanvas3?.nativeElement) return;
     const ctx = this.monCanvas3.nativeElement.getContext('2d');
+    if (!ctx) return;
+
     const config: ChartConfiguration = {
       type: 'line',
       data: {
@@ -146,8 +194,8 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
           title: {
             display: true,
             text: 'Graphique 3: Évolution des Ventes',
-             font: {
-                size: 16
+            font: {
+              size: 16
             }
           }
         },
@@ -158,6 +206,9 @@ export class CodeRouteComponent implements OnInit, AfterViewInit {
         }
       }
     };
+    if (this.monGraphique3) {
+      this.monGraphique3.destroy();
+    }
     this.monGraphique3 = new Chart(ctx, config);
   }
 }

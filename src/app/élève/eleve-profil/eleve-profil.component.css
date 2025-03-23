@@ -1,0 +1,70 @@
+
+
+.infos-droite {
+    display: flex;
+    flex-direction:column;
+  }
+  
+ 
+  .permis-infos {
+    margin-top: -5%;
+    display: flex;
+    flex-direction:column;
+  }
+
+  .list-group{
+    margin-top: 70px;
+  }
+
+.card {
+    background: linear-gradient(135deg,#171a39f5, #41499fee);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: rgb(233, 251, 255); 
+    padding: 20px; 
+    margin-bottom: 20px; 
+  }
+  
+  .card-title {
+    color: white; 
+  }
+  
+  .card-text {
+    color: rgb(255, 255, 255); 
+  }
+  
+  
+
+.card-text {
+    background-color: white;
+    color: black; 
+    padding: 15px 25px; 
+    border-radius: 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+   width: 400px;
+   margin-top: 40px;
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px; 
+  }
+  
+  
+  h2{
+    font-family: 'Sakana', sans-serif;
+    color: rgb(0, 28, 153);
+  }
+
+  h5{
+    font-family: 'Sakana', sans-serif;
+    color: rgb(0, 28, 153);
+  }
+.mt-4{
+  margin-top: 120px !important;
+}

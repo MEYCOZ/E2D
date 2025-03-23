@@ -1,0 +1,99 @@
+.bienvenue-container { /* Couleur de fond générale */
+
+
+    /*responsive*/
+    
+      .logo {
+        max-width: 150px; /* Ajustez la taille du logo */
+      }
+    
+      .title-image {
+        max-width: 300px; /* Ajustez la taille de l'image du titre */
+      }
+    
+      .custom-btn1 {
+        min-width: 150px;
+      }
+    
+      .custom-btn2 {
+        min-width: 150px;
+      }
+    
+      .right-panel {
+        background-color: #e9ecef; /* Couleur de fond du panneau droit */
+        padding: 3rem;
+      }
+    
+      .illustration {
+        max-width: 80%; /* Ajustez la taille de l'illustration */
+        margin-bottom: 2rem;
+      }
+    
+      .car-video {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    
+      .features {
+        margin-bottom: 2rem;
+      }
+    
+      .feature {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #dee2e6;
+      }
+    
+      .feature:last-child {
+        border-bottom: none;
+      }
+    
+      .btn-success {
+        min-width: 200px;
+      }
+    
+      @media (max-width: 767.98px) {
+        .bienvenue-container {
+          flex-direction: column;
+        }
+        .left-panel, .right-panel {
+          padding: 2rem;
+        }
+        .logo, .title-image {
+          max-width: 80%;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    
+    
+    .btn.btn-success.btn-lg{
+        border-radius: 100px;
+        font-family: 'Sakana', sans-serif;
+        background-color: #41499F;
+        border-color: rgba(255, 255, 0, 0);
+        width: 100%;
+        margin-top: 200px;
+    }
+    
+    .wlcm-text{
+        font-size: 55px;
+        font-family:'Sakana', sans-serif;
+    }
+    
+    .style{
+        background-color: aqua;
+    }
+    
+    .font-weight-bold{
+        color: rgb(191, 232, 245);
+        font-size: 28px;
+        margin-top: 54px;
+        font-family: 'VAGABONDED', sans-serif;
+    }
+    
+    .text-muted{
+        color: rgb(242, 244, 250)!important;
+        font-size: 20px;
+        font-family: 'VAGABONDED', sans-serif;
+    }

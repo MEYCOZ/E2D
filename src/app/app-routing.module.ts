@@ -11,7 +11,9 @@ import { StatistiqueComponent } from './component/moniteur/statistique/statistiq
 import { AdminComponent } from './component/admin/admin.component';
 import { NavbarreComponent } from './component/admin/navbarre/navbarre.component';
 import { NavmoniteurComponent } from './component/moniteur/navmoniteur/navmoniteur.component';
-
+import { EleveProfilComponent } from './élève/eleve-profil/eleve-profil.component';
+import { EleveAccueilComponent } from './élève/eleve-accueil/eleve-accueil.component';
+import { CodeRouteComponent } from './élève/code-route/code-route.component';
 
 
 
@@ -28,6 +30,9 @@ const routes: Routes = [
   {path: 'app-admin', component:AdminComponent},
   {path: 'app-navbarre', component:NavbarreComponent},
   {path: 'app-navmoniteur', component:NavmoniteurComponent},
+  {path: 'app-eleve-accueil', component:EleveAccueilComponent},
+  {path: 'app-eleve-profil', component:EleveProfilComponent},
+  {path: 'app-code-route', component:CodeRouteComponent},
   {path: '', component:BienvenueComponent}, 
 
 ];

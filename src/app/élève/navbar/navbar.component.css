@@ -1,0 +1,48 @@
+.nav-link{
+    font-family: 'Sakana', sans-serif;
+    color: black;
+    font-size: 23px;
+    white-space: nowrap;
+    margin-left: 180px;
+}
+
+.nav-item{
+    font-family: 'Sakana', sans-serif;
+ 
+}
+/*boutton deconnexion*/
+
+
+.btn-deconnexion{
+    font-family: 'Sakana', sans-serif; /*boutton texte déconnexion*/
+    color: #41499F !important;
+    position: relative;
+    font-size: 23px;
+
+    
+}
+
+.navbar-nav{
+   
+  justify-content: center;
+}
+
+.navbar-brand{
+    font-family: 'Sakana', sans-serif;
+    font-size: 23px;
+    margin-left: 90px;
+       
+}
+
+.Deconnexion{
+    margin-left: 160px;
+    border-radius: 58px;
+    border-color: rgba(0, 255, 255, 0);
+    box-shadow: 1px -1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-navbar{
+width: 200px;
+position: relative;
+left:50px;
+}

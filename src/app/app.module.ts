@@ -20,6 +20,10 @@ import { StudentsComponent } from './component/admin/students/students.component
 import { AutoecoleComponent } from './component/admin/autoecole/autoecole.component';
 import { MoniteursComponent } from './component/admin/moniteurs/moniteurs.component';
 import { NavmoniteurComponent } from './component/moniteur/navmoniteur/navmoniteur.component';
+import { EleveProfilComponent } from './élève/eleve-profil/eleve-profil.component';
+import { EleveAccueilComponent } from './élève/eleve-accueil/eleve-accueil.component';
+import { NavbarComponent } from './élève/navbar/navbar.component';
+import { CodeRouteComponent } from './élève/code-route/code-route.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import { NavmoniteurComponent } from './component/moniteur/navmoniteur/navmonite
     StudentsComponent,
     AutoecoleComponent,
     MoniteursComponent,
-    NavmoniteurComponent
+    NavmoniteurComponent,
+    EleveProfilComponent,
+    EleveAccueilComponent,
+    NavbarComponent,
+    CodeRouteComponent
   ],
   imports: [
     BrowserModule,

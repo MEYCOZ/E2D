@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {Chart, registerables } from 'chart.js/auto';
-Chart.register(...registerables);
+import { Component,  OnInit} from '@angular/core';
+import {Chart} from 'chart.js';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,4 +9,7 @@ Chart.register(...registerables);
 })
 export class AppComponent {
   title = 'e2d';
+  chart = [];
+
+
 }

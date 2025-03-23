@@ -24,6 +24,7 @@ import { EleveProfilComponent } from './élève/eleve-profil/eleve-profil.compon
 import { EleveAccueilComponent } from './élève/eleve-accueil/eleve-accueil.component';
 import { NavbarComponent } from './élève/navbar/navbar.component';
 import { CodeRouteComponent } from './élève/code-route/code-route.component';
+import { NotesComponent } from './élève/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CodeRouteComponent } from './élève/code-route/code-route.component';
     EleveProfilComponent,
     EleveAccueilComponent,
     NavbarComponent,
-    CodeRouteComponent
+    CodeRouteComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

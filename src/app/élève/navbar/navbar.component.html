@@ -1,26 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(228, 238, 248) !important;">
-    <img class="logo-navbar" src="/assets/svg/logo.svg">
-    <a class="navbar-brand" routerLink="/app-eleve-accueil">Accueil</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/app-eleve-profil">Mon Profil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/app-code-route">Code de la route</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="">examens</a>
-        </li>
-        <li class="nav-item">
-          <button routerLink="/app-bienvenue" class="Deconnexion"><div class="btn-deconnexion">Deconnexion</div></button>
-        </li>
-      </ul>
-    </div>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white px-3">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img src="/assets/svg/logo.svg" alt="Logo" height="42">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto d-flex">
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/app-eleve-accueil" routerLinkActive="active">ACCUEIL</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/app-eleve-profil" routerLinkActive="active">MON PROFIL</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/app-code-route" routerLinkActive="active">Code de la route</a>
+                  </li>
+              </ul>
+              <a href="#" class="btn btn-deconnexion" routerLink="/app-bienvenue">DÉCONNEXION</a>
+          </div>
+      </div>
   </nav>
-  
-  
-  
+</body>

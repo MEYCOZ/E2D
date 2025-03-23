@@ -1,48 +1,53 @@
-.nav-link{
-    font-family: 'Sakana', sans-serif;
+@font-face {
+    font-family: 'Sakana';
+    src: url('/assets/fonts/Sakana.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar-nav {
+    gap: 100px; /* Espacement entre les éléments */
+    font-family: 'Sakana', sans-serif; /* Appliquer la police à la navbar */
+}
+
+.navbar-nav .nav-link {
     color: black;
-    font-size: 23px;
-    white-space: nowrap;
-    margin-left: 180px;
-}
-
-.nav-item{
-    font-family: 'Sakana', sans-serif;
- 
-}
-/*boutton deconnexion*/
-
-
-.btn-deconnexion{
-    font-family: 'Sakana', sans-serif; /*boutton texte déconnexion*/
-    color: #41499F !important;
     position: relative;
-    font-size: 23px;
-
-    
+    text-decoration: none;
 }
 
-.navbar-nav{
-   
-  justify-content: center;
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link:focus {
+    color: blue !important;
 }
 
-.navbar-brand{
-    font-family: 'Sakana', sans-serif;
-    font-size: 23px;
-    margin-left: 90px;
-       
+.navbar-nav .nav-link:hover {
+    color: blue;
 }
 
-.Deconnexion{
-    margin-left: 160px;
-    border-radius: 58px;
-    border-color: rgba(0, 255, 255, 0);
-    box-shadow: 1px -1px 4px rgba(0, 0, 0, 0.3);
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 5px;
+    background: blue;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
 }
 
-.logo-navbar{
-width: 200px;
-position: relative;
-left:50px;
+.navbar-nav .nav-link:hover::after, 
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+.btn-deconnexion {
+    font-family: 'Sakana', sans-serif; /* Appliquer la police à la navbar */
+    border: 1px solid blue;
+    color: blue;
+    border-radius: 20px;
+    padding: 5px 15px;
 }

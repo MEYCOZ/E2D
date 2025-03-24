@@ -1,32 +1,46 @@
 <?php
-session_start();
-ini_set('session.gc_maxlifetime', 3600); // 1 heure
-ini_set('session.cookie_lifetime', 3600); 
-session_write_close();
 require "../Config/connexion_db.php";
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $login = $_POST['login'];
-    $mot_de_passe = $_POST['mot_de_passe'];
-
-    $sql = "SELECT id_eleves, nom, mot_de_passe FROM eleves WHERE login = :login LIMIT 1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['login' => $login]);
-
-    $eleves = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($eleves) {
-        if (password_verify($mot_de_passe, $eleves['mot_de_passe'])) {
-            $_SESSION['eleves_id_eleves'] = $eleves['id_eleves'];
-            $_SESSION['eleves_nom'] = $eleves['nom'];
-
-            header("Location: ../src/indextest.html");// je dois aussi chnager le redirection 
-            exit();
-        } else {
-            echo "Mot de passe incorrect";
-        }
-    } else {
-        echo "Utilisateur non trouvé";
+try {
+    // Récupération des données envoyées par Angular (données JSON)
+    $data = json_decode(file_get_contents("php://input"), true);
+    
+    if (!isset($data['login'], $data['mot_de_passe'])) {
+        // Si les données 'login' ou 'mot_de_passe' sont manquantes
+        echo json_encode(["success" => false, "message" => "Données manquantes."]);
+        exit();
     }
+
+    // Récupérer l'utilisateur avec ce login dans la base de données
+    $sql = "SELECT * FROM eleves WHERE login = :login";
+    $query = $pdo->prepare($sql);
+    $query->execute(['login' => $data['login']]);
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        // Si aucun utilisateur n'est trouvé avec ce login
+        echo json_encode(["success" => false, "message" => "Identifiant incorrect"]);
+        exit();
+    }
+
+    // Vérifier le mot de passe
+    if (!password_verify($data['mot_de_passe'], $user['mot_de_passe'])) {
+        // Si le mot de passe est incorrect
+        echo json_encode(["success" => false, "message" => "Mot de passe incorrect"]);
+        exit();
+    }
+
+    // Si tout est bon, on renvoie une réponse avec les informations de l'utilisateur
+    echo json_encode(["success" => true, "message" => "Connexion réussie", "user" => $user]);
+    
+} catch (Exception $e) {
+    // En cas d'erreur, on renvoie un message d'erreur
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
-// ca c'est pour la connexion de l'auto_ecole
 ?>

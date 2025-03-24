@@ -3,43 +3,47 @@
         <div class="login-container p-5" style="max-width: 600px; width: 100%;">
             <div class="text-center mb-5">
                 <img src="/assets/svg/logo.svg" alt="E2D Logo" class="logo">
-            </div> <!-- Fermeture de la div text-center -->
-            
+            </div>
+
+            <!-- Boutons de sélection -->
             <div class="toggle-buttons d-flex justify-content-center mb-5">
-                <button class="btn me-5 px-4 py-1" 
-                        [ngClass]="{'btn-primary active': selectedButton === 'student', 'btn-outline-primary': selectedButton !== 'student'}"
+                <button class="btn me-3 px-4 py-1" 
+                        [ngClass]="{'btn-primary': selectedButton === 'student', 'btn-outline-primary': selectedButton !== 'student'}"
                         (click)="setActiveButton('student')">
-                    Students
+                    Étudiant
                 </button>
             
                 <button class="btn px-4 py-1" 
-                        [ngClass]="{'btn-primary active': selectedButton === 'moniteur', 'btn-outline-primary': selectedButton !== 'moniteur'}"
+                        [ngClass]="{'btn-primary': selectedButton === 'moniteur', 'btn-outline-primary': selectedButton !== 'moniteur'}"
                         (click)="setActiveButton('moniteur')">
                     Moniteur
-                </button> <!-- Fermeture du bouton Moniteur -->
-            </div> <!-- Fermeture de la div toggle-buttons -->
-            
-            <div class="mb-4 text-start">
-                <label for="email" class="form-label">Identifiant</label>
-                <input type="email" class="form-control p-3" id="email" placeholder="Entrez Identifiant">
+                </button>
             </div>
-            
-            <div class="mb-4 text-start position-relative">
-                <label for="password" class="form-label">Mot de passe</label>
-                <div class="input-group">
-                    <input [type]="showPassword ? 'text' : 'password'" class="form-control p-3" id="password" placeholder="Entrez votre mot de passe">
-                    <button class="btn btn-outline-secondary" type="button" id="toggle-password" (click)="togglePasswordVisibility()">
-                        <img [src]="showPassword ? '/assets/svg/eye-icone.svg' : '/assets/svg/eye.svg'" alt="Afficher/Masquer" class="eye-icon" style="width: 24px;">
-                    </button>
+
+            <!-- Formulaire de connexion -->
+            <form (ngSubmit)="onSubmit()">
+                <div class="mb-4 text-start">
+                    <label for="email" class="form-label">Identifiant</label>
+                    <input type="text" class="form-control p-3" id="email" placeholder="Entrez Identifiant" [(ngModel)]="login" name="login" required>
                 </div>
-            </div>            
-            
-            <div class="mb-4 form-check text-start">
-                <input type="checkbox" class="form-check-input" id="rememberMe">
-                <label class="form-check-label" for="rememberMe">Remember me</label>
-            </div>
-            
-            <button type="submit" class="btn btn-primary w-200 py-2">CONNEXION</button> <!-- Ajout du padding pour le bouton -->
+                
+                <div class="mb-4 text-start position-relative">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <div class="input-group">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control p-3" id="password" placeholder="Entrez votre mot de passe" [(ngModel)]="mot_de_passe" name="mot_de_passe" required>
+                        <button class="btn btn-outline-secondary" type="button" id="toggle-password" (click)="togglePasswordVisibility()">
+                            <img [src]="showPassword ? '/assets/svg/eye-icone.svg' : '/assets/svg/eye.svg'" alt="Afficher/Masquer" class="eye-icon" style="width: 24px;">
+                        </button>
+                    </div>
+                </div>            
+
+                <div class="mb-4 form-check text-start">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">CONNEXION</button>
+            </form>
         </div>
     </div>
 </body>

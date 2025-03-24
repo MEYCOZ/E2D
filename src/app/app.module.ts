@@ -31,7 +31,6 @@ import { NotesComponent } from './élève/notes/notes.component';
   declarations: [
     AppComponent,
     BienvenueComponent,
-    ConnexionComponent,
     MoniteurComponent,
     NoteselevesComponent,
     MonprofilComponent,
@@ -56,7 +55,8 @@ import { NotesComponent } from './élève/notes/notes.component';
     RouterModule,
     FormsModule, // ⬅️ Ajout de FormsModule ici
     HttpClientModule,
-    InscriptionComponent
+    InscriptionComponent,
+    ConnexionComponent
 ],
   providers: [],
   bootstrap: [AppComponent]

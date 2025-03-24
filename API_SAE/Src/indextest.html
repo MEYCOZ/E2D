@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Auto-école</title>
+</head>
+<body>
+
+    <h2>Test de code de la route</h2>
+
+    <form id="quizForm" method="POST" action="../Src/save.php">
+        <label>1. Quelle est la limite de vitesse en ville ?</label><br>
+        <input type="radio" name="q1" value="50"> 50 km/h<br>
+        <input type="radio" name="q1" value="70"> 70 km/h<br><br>
+
+        <label>2. Que signifie un panneau STOP ?</label><br>
+        <input type="radio" name="q2" value="arreter"> Arrêt obligatoire<br>
+        <input type="radio" name="q2" value="ralentir"> Ralentir seulement<br><br>
+
+        <label>3. Peut-on doubler sur une ligne continue ?</label><br>
+        <input type="radio" name="q3" value="oui"> Oui<br>
+        <input type="radio" name="q3" value="non"> Non<br><br>
+
+        <button type="submit">Valider</button>
+    </form>
+
+</body>
+</html>

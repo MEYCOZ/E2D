@@ -1,47 +1,48 @@
+<div class="login-container">
+    <img src="/assets/images/logo.png" alt="Logo" class="logo">
+    <h2>Inscription</h2>
 
-<body>
-    <div class="login-container">
-        <img src="/assets/svg/logo.svg" alt="Logo" class="logo">
-        <h2>Inscription</h2>
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
-            </div>
-            <div class="form-group">
-                <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>            
-            <div class="form-group">
-                <label for="email">Adresse mail</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="date_naissance">Date de naissance</label>
-                <input type="date" id="date_naissance" name="date_naissance" required>
-            </div>
-            <div class="form-group">
-                <label for="telephone">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" required>
-            </div>
-            <div class="form-group">
-                <label for="ville">Ville</label>
-                <input type="text" id="ville" name="ville" required>
-            </div>
-            <div class="form-group">
-                <label for="code_postal">Code postal</label>
-                <input type="text" id="code_postal" name="code_postal" required>
-            </div>
-            <div class="form-group">
-                <label for="neph">Numéro NEPH</label>
-                <input type="text" id="neph" name="neph" required>
-            </div>
-            <button type="submit">S'inscrire</button>
-        </form>
-    </div>
-</body>
-
+    <form (ngSubmit)="onSubmit()" method="POST">
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" [(ngModel)]="eleve.nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" [(ngModel)]="eleve.prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" [(ngModel)]="eleve.login" required>
+        </div>
+        <div class="form-group">
+            <label for="mot_de_passe">Mot de passe</label>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" [(ngModel)]="eleve.mot_de_passe" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Adresse mail</label>
+            <input type="email" id="email" name="email" [(ngModel)]="eleve.email" required>
+        </div>
+        <div class="form-group">
+            <label for="date_naissance">Date de naissance</label>
+            <input type="date" id="date_naissance" name="date_naissance" [(ngModel)]="eleve.date_naissance" required>
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" [(ngModel)]="eleve.telephone" required>
+        </div>
+        <div class="form-group">
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" name="ville" [(ngModel)]="eleve.ville" required>
+        </div>
+        <div class="form-group">
+            <label for="code_postal">Code postal</label>
+            <input type="text" id="code_postal" name="code_postal" [(ngModel)]="eleve.code_postal" required>
+        </div>
+        <div class="form-group">
+            <label for="neph">Numéro NEPH</label>
+            <input type="text" id="neph" name="neph" [(ngModel)]="eleve.neph" required>
+        </div>
+        <button type="submit">S'inscrire</button>
+    </form>
+</div>

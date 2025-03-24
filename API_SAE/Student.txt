@@ -1,0 +1,162 @@
+//Voir les etudiant
+<?php
+require "../Config/connexion_db.php";
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+
+    if (isset($_GET['id']))
+    $sql = "SELECT id,firstname,lastname, birthdate FROM students ORDER BY id";
+    $students = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($students);
+}
+
+
+
+// voir les etudiants qui sont dans leur id grace à leur id 
+<?php
+require "../Config/connexion_db.php";
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT id,firstname,lastname, birthdate FROM students WHERE id= $id";
+        $students = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    } else {
+    $sql = "SELECT * FROM students ORDER BY id";
+
+    }    
+    $students = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($students);
+}
+
+
+
+//ajouter des etudiant 
+<?php
+require "../Config/connexion_db.php";
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT id,firstname,lastname, birthdate FROM students WHERE id= $id";
+        $students = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    } else {
+    $sql = "SELECT * FROM students ORDER BY id";
+
+    }    
+    $students = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($students);
+} else if ($_SERVER['REQUEST_METHOD']==='POST'){
+    
+    $data = json_decode(file_get_contents('php://input'),true);
+    $sql = "INSERT INTO students(firstname,lastname, birthdate) VALUES (:firstname,:lastname,:birthdate)";
+    $params = [
+        'lastname' => $data['lastname'],
+        'firstname'=> $data['firstname'] ,  
+        'birthdate'=> $data['birthdate'] ,
+    ];
+    $query = $pdo->prepare($sql)->execute($params);
+    http_response_code(201);
+    echo json_encode(["message"=> "student created"]);
+}
+
+
+
+
+
+
+// changer le nom de l'etudiant
+<?php
+require "../Config/connexion_db.php";
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT id,firstname,lastname, birthdate FROM students WHERE id= $id";
+        $students = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    } else {
+    $sql = "SELECT * FROM students ORDER BY id";
+
+    }    
+    $students = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($students);
+} else if ($_SERVER['REQUEST_METHOD']==='POST'){
+    
+    $data = json_decode(file_get_contents('php://input'),true);
+    $sql = "INSERT INTO students(firstname,lastname, birthdate) VALUES (:firstname,:lastname,:birthdate)";
+    $params = [
+        'lastname' => $data['lastname'],
+        'firstname'=> $data['firstname'] ,  
+        'birthdate'=> $data['birthdate'] ,
+    ];
+    $query = $pdo->prepare($sql)->execute($params);
+    http_response_code(201);
+    echo json_encode(["message"=> "student created"]);
+} else if ($_SERVER['REQUEST_METHOD']=== 'PUT'){
+    $data = json_decode(file_get_contents('php://input'),true);
+    $sql = "UPDATE students SET lastname = :lastname, firstname = :firstname, birthdate = :birthdate WHERE id = :id";
+    $param = [
+        'id' => $data['id'],
+        'lastname' => $data['lastname'],
+        'firstname'=> $data['firstname'],  
+        'birthdate'=> $data['birthdate'] 
+        
+    ];
+    $query = $pdo->prepare($sql)->execute($param);
+    echo json_encode(["message"=> "student created"]);
+}
+
+
+// supprime l'etudiant <?php
+require "../Config/connexion_db.php";
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+
+    if (isset($_GET['id'])){
+        $id = $_GET['id'];
+        $sql = "SELECT id,firstname,lastname, birthdate FROM students WHERE id= $id";
+        $students = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    } else {
+    $sql = "SELECT * FROM students ORDER BY id";
+
+    }    
+    $students = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($students);
+} else if ($_SERVER['REQUEST_METHOD']==='POST'){
+    
+    $data = json_decode(file_get_contents('php://input'),true);
+    $sql = "INSERT INTO students(firstname,lastname, birthdate) VALUES (:firstname,:lastname,:birthdate)";
+    $params = [
+        'lastname' => $data['lastname'],
+        'firstname'=> $data['firstname'] ,  
+        'birthdate'=> $data['birthdate'] ,
+    ];
+    $query = $pdo->prepare($sql)->execute($params);
+    http_response_code(201);
+    echo json_encode(["message"=> "student created"]);
+} else if ($_SERVER['REQUEST_METHOD']=== 'PUT'){
+    $data = json_decode(file_get_contents('php://input'),true);
+    $sql = "UPDATE students SET lastname = :lastname, firstname = :firstname, birthdate = :birthdate WHERE id = :id";
+    $param = [
+        'id' => $data['id'],
+        'lastname' => $data['lastname'],
+        'firstname'=> $data['firstname'],  
+        'birthdate'=> $data['birthdate'] 
+        
+    ];
+    $query = $pdo->prepare($sql)->execute($param);
+    echo json_encode(["message"=> "student changed"]);
+} else if
+($_SERVER['REQUEST_METHOD'] === 'DELETE'){
+    $data = json_decode(file_get_contents('php://input'),true);
+
+    $sql= "DELETE FROM students WHERE id=:id";
+    $stmt= $pdo->prepare($sql);
+    $stmt->execute(['id' => $data['id']]);
+
+    echo json_encode(["message"=> "student deleted"]);
+} 

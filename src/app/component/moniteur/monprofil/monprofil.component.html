@@ -1,2 +1,84 @@
 
 <app-navmoniteur></app-navmoniteur>
+<!-- Profile Section -->
+<div class="container">
+    <div class="profile-container">
+        <h2 class="profile-title">Mon profil moniteur</h2>
+        
+        <div class="row">
+            <!-- Avatar Column -->
+            <div class="col-md-3 text-center mb-4">
+                <img src="assets/images/BonhommeWhite.png" alt="BonhommeWhite">
+            </div>
+            
+            <!-- Personal Info Column -->
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label class="form-label">Prénom</label>
+                    <input type="text" class="form-control" value="Mehdi" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nom</label>
+                    <input type="text" class="form-control" value="MEYCOZ" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="Meycoz@gmail.com" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Expérience</label>
+                    <input type="text" class="form-control" value="10 ans" readonly>
+                </div>
+            </div>
+            
+            <!-- Additional Info Column -->
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label class="form-label">Age</label>
+                    <input type="text" class="form-control" value="39 ans" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sexe</label>
+                    <input type="text" class="form-control" value="Masculin" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Auto-école</label>
+                    <input type="text" class="form-control" value="Ornikar" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nombres d'élèves</label>
+                    <input type="text" class="form-control" value="10 élèves" readonly>
+                </div>
+            </div>
+            
+            <!-- Contact Info Column -->
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label class="form-label">Ville</label>
+                    <input type="text" class="form-control" value="Montreuil" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Numéro de téléphone</label>
+                    <input type="text" class="form-control" value="+33 6 29 94 77 93" readonly>
+                </div>
+                
+                <!-- Document Section -->
+                <div class="mb-3">
+                    <label class="form-label2">Document</label>
+                    <div class="bg-white text-dark p-3 rounded">
+                        <div class="document-item">
+                            <span class="check-icon">✓</span>Permis de conduire
+                        </div>
+                        <div class="document-item">
+                            <span class="check-icon">✓</span>Attestation de santé
+                        </div>
+                        <button class="add-document-btn">
+                            Ajouter un document
+                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

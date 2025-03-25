@@ -87,6 +87,22 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 5px 5px 0 0;
 }
+.chart-bar2 {
+    width: 8%;
+    background-color: rgba(255, 81, 145, 0.9);
+    border-radius: 5px 5px 0 0;
+}
+
+.buttonP {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+.back-button {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

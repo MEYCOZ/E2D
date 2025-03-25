@@ -12,24 +12,28 @@ import { CommonModule } from '@angular/common';
 })
 
 export class ConnexionComponent {
-  connexionService: any;
-togglePasswordVisibility() {
-throw new Error('Method not implemented.');
-}
-onSubmit() {
-throw new Error('Method not implemented.');
-}
   eleve: Eleve = { login: '', mot_de_passe: '' };
   errorMessage: string = '';
-showPassword: any;
+  showPassword: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  // Assure-toi que ConnexionService est correctement injecté dans le constructeur
+  constructor(private connexionService: ConnexionService) {}
 
+  // Appelé lors de la soumission du formulaire
+  onSubmit() {
+    console.log("Formulaire soumis !");
+    this.onLogin();
+  }
+
+  // Méthode de connexion
   onLogin() {
-    console.log("Bouton cliqué !");
+    console.log("Login:", this.eleve.login);  // Vérifie la valeur de login
+    console.log("Mot de passe:", this.eleve.mot_de_passe);  // Vérifie la valeur de mot_de_passe
+
+    // Appel du service de connexion
     this.connexionService.login(this.eleve).subscribe(
-      (response: { message: string; }) => {
-        console.log("Réponse reçue :", response);
+      (response: { message: string }) => {
+        console.log("Réponse reçue:", response);
         if (response.message === "Connexion réussie") {
           alert('Connexion réussie !');
         } else {
@@ -37,8 +41,8 @@ showPassword: any;
         }
       },
       (error: any) => {
+        console.error("Erreur de requête:", error);
         this.errorMessage = 'Erreur de connexion';
-        console.error("Erreur de requête :", error);
       }
     );
   }

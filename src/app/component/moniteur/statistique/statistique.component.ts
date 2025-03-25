@@ -1,109 +1,207 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Chart, ChartOptions } from 'chart.js';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Chart, ChartConfiguration } from 'chart.js';
+import { Colors } from 'chart.js';
+
+Chart.register(Colors);
+
 
 @Component({
   selector: 'app-statistique',
-  standalone: false,
+  standalone: false,  // Vous avez spécifié standalone: false
   templateUrl: './statistique.component.html',
   styleUrls: ['./statistique.component.css']
 })
-export class StatistiqueComponent implements AfterViewInit {
+export class StatistiqueComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('statisticsChart1', { static: false }) statisticsChart1!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('statisticsChart2', { static: false }) statisticsChart2!: ElementRef<HTMLCanvasElement>; // Référence pour le deuxième graphique
+  statistiqueGraphique1: Chart<any> | null = null;
+  statistiqueGraphique2: Chart<any> | null = null; // Instance pour le deuxième graphique
+
+  constructor() { }
+
+  ngOnInit(): void {
+    // Initialisation du composant
+  }
 
   ngAfterViewInit(): void {
-    const canvas = document.getElementById('statisticsChart') as HTMLCanvasElement;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    this.loadChartJS().then(() => {
+      this.afficherGraphique1();
+      this.afficherGraphique2(); // Appeler la méthode pour afficher le deuxième graphique
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Détruit les graphiques pour libérer les ressources
+    if (this.statistiqueGraphique1) {
+      this.statistiqueGraphique1.destroy();
+    }
+    if (this.statistiqueGraphique2) {
+      this.statistiqueGraphique2.destroy();
+    }
+  }
+
+  async loadChartJS(): Promise<void> {
+    try {
+      const { Chart } = await import('chart.js/auto');
+    } catch (error) {
+      console.error("Failed to load Chart.js:", error);
+      throw error;
+    }
+  }
+
+  afficherGraphique1(): void {
+    if (!this.statisticsChart1?.nativeElement) return;
+    const ctx = this.statisticsChart1.nativeElement.getContext('2d');
     if (!ctx) return;
-    
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(191, 179, 239, 1.0)');
-    gradient.addColorStop(1, 'rgba(134, 105, 221, 1.9)');
-    
-    const data = {
-      labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août'],
-      datasets: [{
-        label: 'Statistiques',
-        data: [3500, 15070, 8000, 15000, 20250, 3000, 10000, 8000],
-        backgroundColor: gradient,
-        borderWidth: 0,
-        borderRadius: 5,
-        barPercentage: 0.6,
-        categoryPercentage: 0.8
-      }]
-    };
 
-    const options: ChartOptions<'bar'> = {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          titleColor: '#3f51b5',
-          bodyColor: '#3f51b5',
-          titleFont: {
-            size: 14,
-            weight: 'bold'
-          },
-          bodyFont: {
-            size: 14
-          },
-          padding: 10,
-          displayColors: false,
-          callbacks: {
-            label: (context) => context.parsed.y.toLocaleString() + ' €'
-          }
-        }
+    const config: ChartConfiguration = {
+      type: 'bar',
+      data: {
+        labels: [
+          "City'Zen",
+          "EnVoitureSimone",
+          "French Permis",
+          "Stych",
+          "Ornikar",
+          "France Auto Ecole",
+          "ECF",
+          "VroomVroom"
+        ],
+        
+        datasets: [{
+          
+          label: "",
+          data: [25, 85, 40, 70, 92, 25, 65, 40],
+          backgroundColor: [
+            'rgba(190, 255, 209, 0.8)',
+          ],
+          borderColor: [
+            'rgba(200, 190, 255, 1)',
+          ],
+          borderWidth: 1,
+          borderRadius: 5,
+          barPercentage: 0.6,
+          categoryPercentage: 0.8
+        }]
       },
-      scales: {
-        y: {
-          beginAtZero: true,
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          },
-          ticks: {
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Taux d'échec des élèves par auto-école (en pourcentage)",
             color: 'rgba(255, 255, 255, 0.8)',
             font: {
-              size: 12
-            },
-            callback: (value) => {
-              const values: { [key: number]: string } = { 
-                0: '0', 
-                570: '570', 
-                2500: '2 500', 
-                5000: '5 000', 
-                10000: '10 000', 
-                15070: '15 070', 
-                20250: '20 250' 
-              };
-
-              // Conversion explicite de `value` en `number`
-              return values[+value] || '';
-            },
-            stepSize: 5000
-          },
-          max: 22000 // Limite max pour l'axe Y
-        },
-        x: {
-          grid: {
-            display: false
-          },
-          ticks: {
-            color: 'rgba(255, 255, 255, 0.8)',
-            font: {
-              size: 12
+              size: 16,
+              
             }
           }
+
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.7)',
+              stepSize: 50,
+            }
+          },
+
+          x: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+               color: 'rgba(255, 255, 255, 0.7)',
+              font: {  
+                size: 14
+            }
+             
+             
+            }
+          },
+          
+          
+
+
         }
       }
     };
-    
-    new Chart(ctx, {
-      type: 'bar',
-      data,
-      options
-    });
+
+    if (this.statistiqueGraphique1) {
+      this.statistiqueGraphique1.destroy();
+    }
+    this.statistiqueGraphique1 = new Chart(ctx, config);
+  }
+
+  afficherGraphique2(): void {
+    if (!this.statisticsChart2?.nativeElement) return;
+    const ctx2 = this.statisticsChart2.nativeElement.getContext('2d');
+    if (!ctx2) return;
+
+    const config2: ChartConfiguration = {
+      type: 'bar', // Type de graphique : line
+      data: {
+        labels: ['Lécole Auto', 'EnVoitureSimone', 'PermisPourTous', 'Stych', 'Ornikar', 'France Auto Ecole', 'ECF', 'VroomVroom'],
+        datasets: [{
+          label: "",
+          
+          data: [50, 12, 30, 12, 8, 40, 22, 18],
+          backgroundColor: 'rgba(255, 81, 145, 0.9)', // Couleur de fond     // Couleur de la ligne
+          borderWidth: 2,
+          fill: false, // Ne pas remplir sous la ligne
+          borderRadius: 5,
+          barPercentage: 0.6,
+          categoryPercentage: 0.8
+           // Taille des points au survol
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Taux d'échec des élèves par auto-école (en pourcentage)",
+            color: 'rgba(255, 255, 255, 0.8)',
+            font: {
+              size: 16,
+              
+            }
+          }
+
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              color: 'rgba(255, 255, 255, 0.7)',
+              stepSize: 50,
+            }
+          },
+
+          x: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+               color: 'rgba(255, 255, 255, 0.7)',
+              font: {  
+                size: 14
+            }
+             
+             
+            }
+          },
+
+        },
+        
+        
+      }
+    };
+
+    if (this.statistiqueGraphique2) {
+      this.statistiqueGraphique2.destroy();
+    }
+    this.statistiqueGraphique2 = new Chart(ctx2, config2);
   }
 }

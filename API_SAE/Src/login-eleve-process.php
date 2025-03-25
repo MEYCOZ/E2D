@@ -1,32 +1,29 @@
 <?php
-session_start();
-ini_set('session.gc_maxlifetime', 3600); // 1 heure
-ini_set('session.cookie_lifetime', 3600); 
-session_write_close();
 require "../Config/connexion_db.php";
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $login = $_POST['login'];
-    $mot_de_passe = $_POST['mot_de_passe'];
+$data = json_decode(file_get_contents("php://input"));
 
-    $sql = "SELECT id_eleves, nom, mot_de_passe FROM eleves WHERE login = :login LIMIT 1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['login' => $login]);
+if (!empty($data->login) && !empty($data->mot_de_passe)) {
+    $login = htmlspecialchars(strip_tags($data->login));
+    $mot_de_passe = htmlspecialchars(strip_tags($data->mot_de_passe));
 
-    $eleves = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($eleves) {
-        if (password_verify($mot_de_passe, $eleves['mot_de_passe'])) {
-            $_SESSION['eleves_id_eleves'] = $eleves['id_eleves'];
-            $_SESSION['eleves_nom'] = $eleves['nom'];
-
-            header("Location: ../src/indextest.html");// je dois aussi chnager le redirection 
-            exit();
-        } else {
-            echo "Mot de passe incorrect";
-        }
+    $query = "SELECT * FROM eleve WHERE login = :login";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":login", $login);
+    $stmt->execute();
+    
+    $eleve = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($eleve && password_verify($mot_de_passe, $eleve['mot_de_passe'])) {
+        echo json_encode(["message" => "Connexion réussie", "eleve" => $eleve]);
     } else {
-        echo "Utilisateur non trouvé";
+        echo json_encode(["message" => "Login ou mot de passe incorrect"]);
     }
+} else {
+    echo json_encode(["message" => "Données manquantes"]);
 }
-// ca c'est pour la connexion de l'auto_ecole
 ?>

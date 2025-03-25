@@ -17,7 +17,6 @@ import { CodeRouteComponent } from './élève/code-route/code-route.component';
 import { NotesComponent } from './élève/notes/notes.component';
 
 
-
 const routes: Routes = [
   {path: 'app-connexion', component:ConnexionComponent}, 
   {path:'app-bienvenue', component:BienvenueComponent}, 
@@ -35,7 +34,9 @@ const routes: Routes = [
   {path: 'app-code-route', component:CodeRouteComponent},
   {path: 'app-notes', component:NotesComponent},
   {path: '', component:BienvenueComponent}, 
-
+  {path: 'connexion', loadComponent: () => import('./component/connexion/connexion.component').then(m => m.ConnexionComponent) },
+  { path: 'eleve-acceuil', component:EleveAccueilComponent},
+  { path: '**', redirectTo: 'connexion' }
 ];
 
 @NgModule({

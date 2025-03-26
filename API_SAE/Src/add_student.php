@@ -22,24 +22,21 @@ try {
     $hashed_password = password_hash($data['mot_de_passe'], PASSWORD_BCRYPT);
 
     // Requête SQL avec PDO
-    $sql = "INSERT INTO eleves (nom, prenom, email, login, mot_de_passe, date_naissance, telephone, ville, code_postal, neph) 
-            VALUES (:nom, :prenom, :email, :login, :mot_de_passe, :date_naissance, :telephone, :ville, :code_postal, :neph)";
-    
-    $query = $pdo->prepare($sql);
-
-    // Exécuter la requête avec les données reçues
-    $query->execute([
-        'nom' => $data['nom'],
-        'prenom' => $data['prenom'],
-        'email' => $data['email'],
-        'login' => $data['login'],
-        'mot_de_passe' => $hashed_password, // Stockage du mot de passe haché
-        'date_naissance' => $data['date_naissance'], 
-        'telephone' => $data['telephone'],
-        'ville' => $data['ville'],
-        'code_postal' => $data['code_postal'],
-        'neph' => $data['neph']
-    ]);
+    $sql = "INSERT INTO eleves (nom, prenom, login, mot_de_passe, email, date_naissance, telephone, ville, code_postal, neph) 
+    VALUES (:nom, :prenom, :login, :mot_de_passe, :email, :date_naissance, :telephone, :ville, :code_postal, :neph)";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+'nom' => $data['nom'],
+'prenom' => $data['prenom'],
+'login' => $data['login'],
+'mot_de_passe' => $data['mot_de_passe'],
+'email' => $data['email'],
+'date_naissance' => $data['date_naissance'],
+'telephone' => $data['telephone'],
+'ville' => $data['ville'],
+'code_postal' => $data['code_postal'],
+'neph' => $data['neph']
+]);
 
     // Réponse JSON
     echo json_encode(["message" => "Inscription réussie !"]);

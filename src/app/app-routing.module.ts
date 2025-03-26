@@ -34,9 +34,7 @@ const routes: Routes = [
   {path: 'app-code-route', component:CodeRouteComponent},
   {path: 'app-notes', component:NotesComponent},
   {path: '', component:BienvenueComponent}, 
-  {path: 'connexion', loadComponent: () => import('./component/connexion/connexion.component').then(m => m.ConnexionComponent) },
-  { path: 'eleve-acceuil', component:EleveAccueilComponent},
-  { path: '**', redirectTo: 'connexion' }
+  
 ];
 
 @NgModule({

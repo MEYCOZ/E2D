@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { BienvenueComponent } from './component/bienvenue/bienvenue.component';
-import { ConnexionComponent } from './component/connexion/connexion.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { MoniteurComponent } from './component/moniteur/moniteur.component';
 import { NoteselevesComponent } from './component/moniteur/noteseleves/noteseleves.component';
@@ -26,6 +25,7 @@ import { EleveAccueilComponent } from './élève/eleve-accueil/eleve-accueil.com
 import { NavbarComponent } from './élève/navbar/navbar.component';
 import { CodeRouteComponent } from './élève/code-route/code-route.component';
 import { NotesComponent } from './élève/notes/notes.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { NotesComponent } from './élève/notes/notes.component';
     NotesComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -56,7 +57,7 @@ import { NotesComponent } from './élève/notes/notes.component';
     FormsModule, 
     HttpClientModule,
     InscriptionComponent,
-    ConnexionComponent
+ 
 ],
   providers: [],
   bootstrap: [AppComponent]

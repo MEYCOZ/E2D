@@ -1,49 +1,50 @@
 import { Component } from '@angular/core';
-import { ConnexionService, Eleve } from '../../service/connexion.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { LoginResponse } from '../../models/login-response';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-connexion',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.css'],
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  styleUrls: ['./connexion.component.css']
 })
-
 export class ConnexionComponent {
-  eleve: Eleve = { login: '', mot_de_passe: '' };
+  eleve = { login: '', mot_de_passe: '' };
   errorMessage: string = '';
   showPassword: boolean = false;
 
-  // Assure-toi que ConnexionService est correctement injecté dans le constructeur
-  constructor(private connexionService: ConnexionService) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  // Appelé lors de la soumission du formulaire
-  onSubmit() {
-    console.log("Formulaire soumis !");
-    this.onLogin();
+  // 🔹 Méthode pour afficher/masquer le mot de passe
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
-  // Méthode de connexion
-  onLogin() {
-    console.log("Login:", this.eleve.login);  // Vérifie la valeur de login
-    console.log("Mot de passe:", this.eleve.mot_de_passe);  // Vérifie la valeur de mot_de_passe
+  // 🔹 Méthode pour soumettre le formulaire
+  onSubmit() {
+    console.log('Informations de connexion envoyées:', this.eleve);
 
-    // Appel du service de connexion
-    this.connexionService.login(this.eleve).subscribe(
-      (response: { message: string }) => {
-        console.log("Réponse reçue:", response);
-        if (response.message === "Connexion réussie") {
-          alert('Connexion réussie !');
-        } else {
-          this.errorMessage = response.message;
+    this.http.post<LoginResponse>('http://localhost/API_SAE/Src/login-eleve-process.php', this.eleve)
+      .subscribe(
+        response => {
+          console.log("Réponse de l'API :", response);
+
+          if (response.success) {
+            // ✅ Redirection ici
+            this.router.navigate(['/app-eleve-accueil']);
+          
+          } else {
+            this.errorMessage = response.message;
+          }
+        },
+        error => {
+          console.error("Erreur lors de la connexion :", error);
+          this.errorMessage = 'Erreur lors de la connexion. Veuillez réessayer.';
         }
-      },
-      (error: any) => {
-        console.error("Erreur de requête:", error);
-        this.errorMessage = 'Erreur de connexion';
-      }
-    );
+      );
   }
 }

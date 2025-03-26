@@ -5,34 +5,23 @@
                 <img src="/assets/svg/logo.svg" alt="E2D Logo" class="logo">
             </div>
 
-            <!-- Boutons de sélection -->
-            <div class="toggle-buttons d-flex justify-content-center mb-5">
-            <!--    <button class="btn me-3 px-4 py-1" 
-                        [ngClass]="{'btn-primary': selectedButton === 'student', 'btn-outline-primary': selectedButton !== 'student'}"
-                        (click)="setActiveButton('student')">
-                    Étudiant
-                </button>-->
-            
-             <!--   <button class="btn px-4 py-1" 
-                        </button> [ngClass]="{'btn-primary': selectedButton === 'moniteur', 'btn-outline-primary': selectedButton !== 'moniteur'}"
-                        (click)="setActiveButton('moniteur')">
-                    Moniteur
-                </button>-->
-            </div>
-
             <!-- Formulaire de connexion -->
             <form (ngSubmit)="onSubmit()">
                 <div class="mb-4 text-start">
                     <label for="login" class="form-label">Identifiant</label>
-                    <input type="text" class="form-control p-3" id="login" placeholder="Entrez Identifiant" [(ngModel)]="eleve.login" name="login" required>
+                    <input type="text" class="form-control p-3" id="login" placeholder="Entrez Identifiant" 
+                           [(ngModel)]="eleve.login" name="login" required>
                 </div>
                 
                 <div class="mb-4 text-start position-relative">
                     <label for="mot_de_passe" class="form-label">Mot de passe</label>
                     <div class="input-group">
-                        <input [type]="showPassword ? 'text' : 'password'" class="form-control p-3" id="password" placeholder="Entrez votre mot de passe" [(ngModel)]="eleve.mot_de_passe" name="mot_de_passe" required>
-                        <button class="btn btn-outline-secondary" type="button" id="toggle-password"   >
-                            <img [src]="showPassword ? '/assets/svg/eye-icone.svg' : '/assets/svg/eye.svg'" alt="Afficher/Masquer" class="eye-icon" style="width: 24px;">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control p-3" 
+                               id="password" placeholder="Entrez votre mot de passe" 
+                               [(ngModel)]="eleve.mot_de_passe" name="mot_de_passe" required>
+                        <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                            <img [src]="showPassword ? '/assets/svg/eye-icone.svg' : '/assets/svg/eye.svg'" 
+                                 alt="Afficher/Masquer" class="eye-icon" style="width: 24px;">
                         </button>
                     </div>
                 </div>            
@@ -42,8 +31,8 @@
                     <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
                 </div>
 
-                <button type="button" class="btn btn-primary w-100 py-2">CONNEXION</button>
-                <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+                <button type="submit" class="btn btn-primary w-100 py-2">CONNEXION</button>
+                <p *ngIf="errorMessage" class="error text-danger mt-3">{{ errorMessage }}</p>
             </form>
         </div>
     </div>
